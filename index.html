@@ -1,0 +1,1290 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <meta name="robots" content="noindex,nofollow" />
+    <meta name="theme-color" content="#faf4e8" />
+    <meta
+      name="description"
+      content="Un pequeño lugar para guardar una gran alegría. Un recuerdo, mil emociones — MEMORIX."
+    />
+    <title>Tu alegría deja huella · MEMORIX</title>
+    <style>
+      :root {
+        --paper: #faf4e8;
+        --ink: #343c30;
+        --muted: #697061;
+        --orange: #ba4a2d;
+        --olive: #616c43;
+        --line: #d7d4c5;
+        --peach: #ecd0ba;
+        --yellow: #efc95c;
+        --serif: Georgia, "Times New Roman", serif;
+      }
+      * {
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 90px;
+      }
+      body {
+        margin: 0;
+        background: var(--paper);
+        color: var(--ink);
+        font:
+          16px/1.65 system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+      }
+      body:has(dialog[open]) {
+        overflow: hidden;
+      }
+      button,
+      a {
+        -webkit-tap-highlight-color: transparent;
+      }
+      button {
+        font: inherit;
+        cursor: pointer;
+        color: inherit;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      button:focus-visible,
+      a:focus-visible,
+      summary:focus-visible {
+        outline: 3px solid var(--orange);
+        outline-offset: 6px;
+      }
+      .wrap {
+        width: min(1120px, calc(100% - 64px));
+        margin: auto;
+      }
+      .skip {
+        position: absolute;
+        top: -100px;
+        left: 20px;
+        background: white;
+        padding: 10px;
+        z-index: 10;
+      }
+      .skip:focus {
+        top: 10px;
+      }
+      .draft {
+        background: var(--ink);
+        color: #fff7e6;
+        padding: 7px 24px;
+        text-align: center;
+        font-size: 11px;
+        letter-spacing: 0.08em;
+      }
+      .draft span {
+        opacity: 0.8;
+      }
+      header {
+        border-bottom: 1px solid var(--line);
+      }
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 88px;
+      }
+      .brand {
+        font-weight: 600;
+        font-size: 21px;
+        letter-spacing: 0.17em;
+      }
+      .brand small {
+        display: block;
+        letter-spacing: 0.02em;
+        font-weight: 400;
+        font-size: 10px;
+        color: var(--muted);
+      }
+      nav {
+        display: flex;
+        gap: 28px;
+        font-size: 12px;
+      }
+      nav a:hover {
+        color: var(--orange);
+      }
+      .nav-heart {
+        font-size: 26px;
+        color: var(--orange);
+      }
+      .eyebrow {
+        font-size: 11px;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        font-weight: 600;
+      }
+      .hero {
+        display: grid;
+        grid-template-columns: 1.05fr 1fr;
+        gap: 64px;
+        align-items: center;
+        padding: 86px 0 96px;
+      }
+      .eyebrow .dot {
+        display: inline-block;
+        width: 6px;
+        height: 6px;
+        background: var(--olive);
+        border-radius: 50%;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+      h1 {
+        font: normal clamp(46px, 6vw, 76px)/1.04 var(--serif);
+        letter-spacing: -0.045em;
+        margin: 27px 0;
+      }
+      h1 em {
+        color: var(--orange);
+        font-weight: normal;
+      }
+      h2 {
+        font: normal clamp(33px, 4vw, 48px)/1.15 var(--serif);
+        letter-spacing: -0.03em;
+        margin-bottom: 18px;
+      }
+      .lead {
+        color: var(--muted);
+        max-width: 400px;
+        font-size: 15px;
+        line-height: 1.85;
+      }
+      .button {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        border: 0;
+        padding: 14px 22px;
+        background: var(--ink);
+        color: white;
+        font-size: 12px;
+        border-radius: 3px;
+        transition:
+          background 0.2s,
+          transform 0.2s;
+      }
+      .button:hover {
+        background: var(--olive);
+        transform: translateY(-2px);
+      }
+      .hero .button {
+        margin-top: 15px;
+      }
+      .quiet {
+        font: italic 16px var(--serif);
+        color: var(--muted);
+        margin: 24px 0 0;
+      }
+      .collage {
+        position: relative;
+        height: 440px;
+      }
+      .polaroid {
+        position: absolute;
+        background: #fffdf6;
+        padding: 14px 14px 22px;
+        box-shadow: 0 12px 35px #38352718;
+        border: 1px solid #e6dfd2;
+      }
+      .hero-photo {
+        width: 75%;
+        left: 11%;
+        top: 22px;
+        transform: rotate(-5deg);
+      }
+      .photo-space {
+        width: 100%;
+        min-width: 0;
+        aspect-ratio: 4/5;
+        display: grid;
+        place-content: center;
+        text-align: center;
+        overflow: hidden;
+        position: relative;
+        background: #e9d6bf;
+        color: #766b59;
+      }
+      .photo-space svg {
+        width: 58px;
+        height: 58px;
+        margin: 0 auto 16px;
+        stroke: currentColor;
+        fill: none;
+        stroke-width: 1.1;
+      }
+      .photo-space small {
+        font-size: 11px;
+        line-height: 1.8;
+        padding: 0 20px;
+      }
+      .photo-space.tiene-foto:before {
+        display: none;
+      }
+      .photo-space:before {
+        content: "";
+        width: 210px;
+        height: 210px;
+        border-radius: 50%;
+        background: #f5e6ca;
+        position: absolute;
+        top: -90px;
+        right: -80px;
+        opacity: 0.8;
+      }
+      .photo-space > * {
+        position: relative;
+      }
+      .photo-space img {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+      }
+      .handwriting {
+        font: italic 19px var(--serif);
+        text-align: center;
+        margin: 17px 0 0;
+      }
+      .tape {
+        position: absolute;
+        width: 95px;
+        height: 27px;
+        background: #c9cba883;
+        top: -12px;
+        left: calc(50% - 48px);
+        transform: rotate(-6deg);
+        z-index: 1;
+      }
+      .stamp {
+        position: absolute;
+        right: -5px;
+        bottom: 20px;
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        background: var(--yellow);
+        display: grid;
+        place-content: center;
+        text-align: center;
+        transform: rotate(12deg);
+        font-size: 10px;
+        line-height: 1.6;
+        letter-spacing: 0.12em;
+      }
+      .stamp b {
+        font: italic 24px var(--serif);
+        letter-spacing: 0;
+      }
+      .flower {
+        font-size: 85px;
+        color: var(--orange);
+        position: absolute;
+        top: 0;
+        right: -8px;
+        line-height: 1;
+      }
+      .spark {
+        font: 40px var(--serif);
+        position: absolute;
+        left: -5px;
+        bottom: 65px;
+        color: var(--olive);
+      }
+      .ribbon {
+        padding: 22px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        display: flex;
+        justify-content: space-around;
+        gap: 15px;
+        font: italic 20px var(--serif);
+        color: var(--olive);
+      }
+      .ribbon i {
+        font: 14px system-ui;
+        color: var(--orange);
+      }
+      section {
+        padding: 80px 0;
+      }
+      .section-intro {
+        max-width: 540px;
+      }
+      .section-intro p {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .essence {
+        display: grid;
+        grid-template-columns: 0.85fr 1.15fr;
+        gap: 85px;
+      }
+      .essence blockquote {
+        margin: 18px 0 0;
+        padding: 0 0 0 27px;
+        border-left: 2px solid var(--orange);
+        font: italic 30px/1.45 var(--serif);
+      }
+      .essence blockquote small {
+        display: block;
+        margin-top: 24px;
+        font: 11px system-ui;
+        color: var(--muted);
+      }
+      .traits {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+      .traits span {
+        border: 1px solid var(--line);
+        padding: 8px 14px;
+        font-size: 11px;
+        border-radius: 30px;
+      }
+      .album {
+        background: #f0eddf;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .album-top {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 36px;
+      }
+      .filters {
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+      .filter {
+        background: transparent;
+        border: 1px solid #cdcdbb;
+        border-radius: 30px;
+        padding: 8px 16px;
+        font-size: 11px;
+      }
+      .filter[aria-pressed="true"] {
+        background: var(--ink);
+        border-color: var(--ink);
+        color: white;
+      }
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+      }
+      .memory {
+        background: #fffdf7;
+        border: 1px solid #dedbca;
+        padding: 12px;
+        text-align: left;
+        transition:
+          transform 0.2s,
+          box-shadow 0.2s;
+        width: 100%;
+      }
+      .memory:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 25px #343c3010;
+      }
+      .memory:nth-child(2) {
+        transform: rotate(2deg);
+      }
+      .memory:nth-child(2):hover {
+        transform: rotate(0deg) translateY(-5px);
+      }
+      .memory .photo-space {
+        aspect-ratio: 1.05;
+      }
+      .memory:nth-child(2) .photo-space {
+        background: #d5dcc9;
+      }
+      .memory:nth-child(3) .photo-space {
+        background: #efd6bc;
+      }
+      .memory h3 {
+        font: normal 22px/1.2 var(--serif);
+        margin: 17px 7px 8px;
+      }
+      .memory p {
+        font-size: 11px;
+        color: var(--muted);
+        margin: 0 7px 8px;
+      }
+      .memory .card-foot {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 13px 7px 7px;
+        font-size: 9px;
+        letter-spacing: 0.13em;
+        text-transform: uppercase;
+        color: var(--olive);
+      }
+      .empty {
+        padding: 40px;
+        text-align: center;
+        grid-column: 1/-1;
+      }
+      .album-note {
+        margin: 26px 0 0;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .letter-section {
+        text-align: center;
+        max-width: 710px;
+        margin: auto;
+      }
+      .letter-section .subtitle {
+        font-size: 14px;
+        color: var(--muted);
+      }
+      .envelope {
+        width: min(420px, 100%);
+        height: 224px;
+        border: 1px solid #d5c4a9;
+        background: #e6d3b8;
+        margin: 35px auto 23px;
+        position: relative;
+        display: grid;
+        place-items: center;
+        box-shadow: 0 13px 30px #58462815;
+        overflow: hidden;
+      }
+      .envelope:before,
+      .envelope:after {
+        content: "";
+        position: absolute;
+        width: 320px;
+        height: 220px;
+        background: #eadac1;
+        border: 1px solid #d5c4a9;
+        transform: rotate(35deg);
+        left: -90px;
+        bottom: -100px;
+      }
+      .envelope:after {
+        transform: rotate(-35deg);
+        left: auto;
+        right: -90px;
+      }
+      .flap {
+        position: absolute;
+        width: 100%;
+        height: 65%;
+        background: #f2e4cf;
+        top: 0;
+        left: 0;
+        clip-path: polygon(0 0, 100% 0, 50% 100%);
+      }
+      .seal {
+        position: relative;
+        z-index: 1;
+        background: var(--orange);
+        color: white;
+        width: 61px;
+        height: 61px;
+        display: grid;
+        place-items: center;
+        border-radius: 50%;
+        font: 30px var(--serif);
+        box-shadow: 0 4px 12px #a34b2830;
+        transition: transform 0.2s;
+      }
+      .envelope:hover .seal {
+        transform: scale(1.12);
+      }
+      .envelope-caption {
+        display: block;
+        font-size: 11px;
+        color: var(--muted);
+      }
+      .letter {
+        background: #fffdf7;
+        border: 1px solid #e5d9c6;
+        padding: 40px;
+        text-align: left;
+        box-shadow: 0 10px 30px #343c3010;
+        margin: 28px 0 0;
+      }
+      .letter h3 {
+        font: italic 30px var(--serif);
+        color: var(--orange);
+      }
+      .letter p {
+        font: 17px/1.85 var(--serif);
+      }
+      .letter .signature {
+        font-style: italic;
+        margin-bottom: 0;
+        color: var(--olive);
+      }
+      [hidden] {
+        display: none !important;
+      }
+      .closing {
+        border-top: 1px solid var(--line);
+        text-align: center;
+        padding: 50px 0;
+      }
+      .closing .flower-small {
+        color: var(--orange);
+        font-size: 36px;
+      }
+      .closing p {
+        font: italic 26px/1.4 var(--serif);
+        max-width: 510px;
+        margin: 16px auto;
+      }
+      footer {
+        border-top: 1px solid var(--line);
+        padding: 22px 0;
+      }
+      .footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 20px;
+        color: var(--muted);
+        font-size: 10px;
+      }
+      .footer .brand {
+        font-size: 14px;
+      }
+      .footer p {
+        margin: 0;
+      }
+      dialog {
+        border: 1px solid var(--line);
+        border-radius: 6px;
+        background: var(--paper);
+        padding: 28px;
+        width: min(600px, calc(100% - 32px));
+        max-height: 90dvh;
+        color: var(--ink);
+      }
+      dialog::backdrop {
+        background: #242b22c9;
+        backdrop-filter: blur(4px);
+      }
+      .modal-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 10px;
+        align-items: center;
+        margin-bottom: 20px;
+      }
+      .close {
+        border: 1px solid var(--line);
+        background: transparent;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 23px;
+      }
+      .modal-space {
+        aspect-ratio: 4/3;
+      }
+      /* La foto ampliada se muestra completa, sin recortar. */
+      .modal-space img {
+        object-fit: contain;
+      }
+      .modal-title {
+        font: 32px var(--serif);
+        margin: 24px 0 12px;
+      }
+      .modal-text {
+        font-size: 14px;
+        color: var(--muted);
+        white-space: pre-line;
+      }
+      .back-top {
+        font-size: 11px;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+      }
+      .decor {
+        pointer-events: none;
+      }
+      .no-js {
+        padding: 15px;
+        background: #f1d8bd;
+        text-align: center;
+        font-size: 13px;
+      }
+      @media (min-width: 1000px) {
+        .hero-photo .photo-space {
+          max-height: 338px;
+        }
+      }
+      @media (max-width: 800px) {
+        .wrap {
+          width: calc(100% - 40px);
+        }
+        .hero {
+          gap: 30px;
+          grid-template-columns: 1fr 1fr;
+          padding: 64px 0;
+        }
+        .collage {
+          height: 340px;
+        }
+        .hero-photo {
+          width: 88%;
+          left: 0;
+        }
+        .stamp {
+          width: 100px;
+          height: 100px;
+          bottom: 0;
+          right: -8px;
+        }
+        .flower {
+          font-size: 55px;
+        }
+        .essence {
+          gap: 35px;
+        }
+        .grid {
+          gap: 14px;
+        }
+        .filters {
+          gap: 5px;
+        }
+        .filter {
+          padding: 7px 10px;
+        }
+        .album-top {
+          align-items: start;
+          flex-direction: column;
+        }
+      }
+      @media (max-width: 600px) {
+        .draft {
+          font-size: 9px;
+        }
+        .nav {
+          height: 77px;
+        }
+        .brand {
+          font-size: 18px;
+        }
+        nav {
+          gap: 17px;
+          font-size: 11px;
+        }
+        .nav-heart {
+          display: none;
+        }
+        .hero {
+          grid-template-columns: 1fr;
+          padding: 44px 0 50px;
+          gap: 38px;
+        }
+        h1 {
+          font-size: 60px;
+          max-width: 380px;
+        }
+        .hero .lead {
+          max-width: 350px;
+        }
+        .collage {
+          height: 415px;
+          width: min(340px, 100%);
+          margin: auto;
+        }
+        .hero-photo {
+          width: 80%;
+          left: 7%;
+        }
+        .hero-photo .photo-space {
+          max-height: 310px;
+        }
+        .stamp {
+          bottom: 5px;
+          right: 0;
+          width: 116px;
+          height: 116px;
+        }
+        .flower {
+          right: 0;
+          top: 0;
+          font-size: 70px;
+        }
+        .ribbon {
+          font-size: 16px;
+          padding: 20px 0;
+        }
+        .ribbon span:last-child,
+        .ribbon i:last-of-type {
+          display: none;
+        }
+        section {
+          padding: 54px 0;
+        }
+        .essence {
+          grid-template-columns: 1fr;
+          gap: 20px;
+        }
+        .essence blockquote {
+          font-size: 27px;
+        }
+        .grid {
+          grid-template-columns: 1fr;
+          gap: 25px;
+          max-width: 400px;
+          margin: auto;
+        }
+        .memory {
+          padding: 15px;
+        }
+        .memory .photo-space {
+          aspect-ratio: 1.2;
+        }
+        .memory:nth-child(2) {
+          transform: none;
+        }
+        .letter {
+          padding: 26px;
+        }
+        .footer {
+          flex-wrap: wrap;
+        }
+        .closing p {
+          font-size: 24px;
+        }
+        .letter-section h2 {
+          font-size: 39px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *:before,
+        *:after {
+          transition: none !important;
+          animation: none !important;
+        }
+      }
+      .music-section {
+        border-top: 1px solid var(--line);
+        text-align: center;
+        max-width: 710px;
+      }
+      .music-section .music-caption {
+        color: var(--muted);
+        font-size: 14px;
+      }
+      .music-player {
+        background: #f0eddf;
+        border: 1px solid var(--line);
+        padding: 24px;
+        border-radius: 6px;
+        margin: 26px auto 0;
+        max-width: 470px;
+      }
+      .music-player p {
+        font: italic 21px/1.4 var(--serif);
+        overflow-wrap: anywhere;
+      }
+      .music-player audio {
+        display: block;
+        width: 100%;
+        margin: auto;
+      }
+      .music-player .music-status {
+        font: 12px/1.5 system-ui, sans-serif;
+        color: var(--muted);
+        margin: 16px 0 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Ir al contenido</a>
+    <header>
+      <div class="nav wrap">
+        <a class="brand" href="#"
+          >MEMORIX<small>Un recuerdo, mil emociones</small></a
+        >
+        <nav aria-label="Navegación principal">
+          <a href="#esencia">Su esencia</a><a href="#recuerdos">Recuerdos</a
+          ><a href="#carta">Una carta</a>
+        </nav>
+        <span class="nav-heart" aria-hidden="true">♡</span>
+      </div>
+    </header>
+    <main id="contenido">
+      <div class="hero wrap">
+        <div>
+          <div class="eyebrow">
+            <span class="dot"></span>Un pequeño lugar, una gran historia
+          </div>
+          <h1>Tu alegría<br />deja <em>huella.</em></h1>
+          <p class="lead" id="bienvenida">
+            Hay personas que hacen más bonitos los días. Este rincón es para ti:
+            para tu alegría y para esos momentos que merecen quedarse para
+            siempre.
+          </p>
+          <a class="button" href="#recuerdos"
+            >Volver a esos momentos <span aria-hidden="true">↗</span></a
+          >
+          <p class="quiet">Porque recordar también es volver a sonreír.</p>
+        </div>
+        <div class="collage">
+          <span class="flower decor" aria-hidden="true">✿</span>
+          <div class="polaroid hero-photo">
+            <div class="tape decor"></div>
+            <!-- FOTO PRINCIPAL: coloca fotos/portada.jpg junto a index.html. -->
+            <div class="photo-space" id="portada">
+              <svg aria-hidden="true" viewBox="0 0 64 64">
+                <rect x="9" y="17" width="46" height="35" rx="4" />
+                <path d="M20 17l4-7h16l4 7" />
+                <circle cx="32" cy="34" r="11" />
+                <path d="M44 24h4" /></svg
+              ><small
+                >Aquí irá su fotografía favorita.<br />Una sonrisa que lo dice
+                todo.</small
+              >
+            </div>
+            <p class="handwriting" id="piePortada">
+              Una alegría que se queda ♡
+            </p>
+          </div>
+          <span class="spark decor" aria-hidden="true">✧</span>
+          <div class="stamp decor" aria-hidden="true">
+            HECHO DE<br /><b>momentos</b>PARA SIEMPRE
+          </div>
+        </div>
+      </div>
+      <div class="ribbon wrap" aria-hidden="true">
+        <span>Risas compartidas</span><i>✦</i><span>Pequeños instantes</span
+        ><i>✦</i><span>Recuerdos para siempre</span>
+      </div>
+      <section id="esencia" class="wrap essence">
+        <div class="section-intro">
+          <p class="eyebrow">01 / Su esencia</p>
+          <h2>La alegría de<br />ser tú.</h2>
+          <p>
+            Esta es una pequeña celebración de lo que te hace especial. Un
+            espacio para recordar cómo tu alegría acompaña los momentos que
+            compartes.
+          </p>
+          <div class="traits">
+            <span>Alegría</span><span>Risas compartidas</span
+            ><span>Momentos especiales</span>
+          </div>
+        </div>
+        <blockquote>
+          “Ojalá este rincón te recuerde siempre cuánta alegría cabe en los
+          instantes que guardas en el corazón.”<small
+            >UNA DEDICATORIA PARA TI</small
+          >
+        </blockquote>
+      </section>
+      <section class="album" id="recuerdos">
+        <div class="wrap">
+          <div class="album-top">
+            <div class="section-intro">
+              <p class="eyebrow">02 / El álbum</p>
+              <h2>Volver a sentir.</h2>
+              <p>Toca un recuerdo y abre su pequeña historia.</p>
+            </div>
+            <div class="filters" aria-label="Filtrar recuerdos">
+              <button class="filter" data-filter="todos" aria-pressed="true">
+                Todos</button
+              ><button
+                class="filter"
+                data-filter="sonrisas"
+                aria-pressed="false"
+              >
+                Sonrisas</button
+              ><button
+                class="filter"
+                data-filter="personas"
+                aria-pressed="false"
+              >
+                Personas</button
+              ><button
+                class="filter"
+                data-filter="aventuras"
+                aria-pressed="false"
+              >
+                Aventuras
+              </button>
+            </div>
+          </div>
+          <!-- FOTOS DEL ÁLBUM: fotos/recuerdo-1.jpg, recuerdo-2.jpg y recuerdo-3.jpg.
+               Las rutas se pueden cambiar en el bloque IMAGENES al final. -->
+          <div class="grid" id="galeria"></div>
+          <p class="album-note" id="albumNota">
+            Espacios de muestra: aquí añadiremos fotografías, fechas y anécdotas
+            reales.
+          </p>
+        </div>
+      </section>
+      <section id="carta" class="wrap letter-section">
+        <p class="eyebrow">03 / Palabras que abrazan</p>
+        <h2>Hay algo que<br />quiero decirte.</h2>
+        <p class="subtitle">
+          Una carta para abrir despacio y guardar cerquita.
+        </p>
+        <button
+          class="envelope"
+          id="abrirCarta"
+          aria-expanded="false"
+          aria-controls="cartaTexto"
+          aria-label="Abrir tu carta"
+        >
+          <span class="flap" aria-hidden="true"></span
+          ><span class="seal" aria-hidden="true">♡</span></button
+        ><span class="envelope-caption" id="instruccionCarta"
+          >Toca el corazón para abrir tu carta</span
+        >
+        <article class="letter" id="cartaTexto" hidden>
+          <h3 id="saludoCarta">Para ti, con mucho cariño:</h3>
+          <div id="parrafosCarta"></div>
+          <p class="signature" id="firmaCarta">
+            Con cariño, de quien comparte estos recuerdos contigo.
+          </p>
+        </article>
+      </section>
+      <!-- CANCIÓN: coloca el archivo en musica/cancion.mp3.
+           Cambia la ruta o el título en el bloque MUSICA al final. -->
+      <section class="wrap music-section" id="musica" aria-labelledby="tituloMusica">
+        <p class="eyebrow">04 / Una melodía especial</p>
+        <h2 id="tituloMusica">Los recuerdos también suenan.</h2>
+        <p class="music-caption">Una canción para acompañarte mientras vuelves a esos momentos.</p>
+        <div class="music-player">
+          <p id="nombreCancion">Una canción para recordar</p>
+          <audio id="reproductorMusica" controls loop preload="auto" aria-labelledby="nombreCancion">
+            Tu navegador no permite reproducir audio.
+          </audio>
+          <p class="music-status" id="estadoMusica" role="status" hidden></p>
+        </div>
+      </section>
+      <div class="closing wrap">
+        <div class="flower-small" aria-hidden="true">✿</div>
+        <p>
+          Que nunca falten motivos para sonreír,<br />ni recuerdos a los que
+          volver.
+        </p>
+        <a class="back-top" href="#contenido">Volver al comienzo ↑</a>
+      </div>
+    </main>
+    <footer>
+      <div class="wrap footer">
+        <a class="brand" href="#">MEMORIX</a>
+        <p>Un recuerdo, mil emociones.</p>
+        <span>Un rincón hecho con cariño ♡</span>
+      </div>
+    </footer>
+    <dialog id="recuerdoDialog" aria-labelledby="modalTitulo">
+      <div class="modal-head">
+        <span class="eyebrow" id="modalCategoria">Un recuerdo</span
+        ><button class="close" id="cerrarDialog" aria-label="Cerrar recuerdo">
+          ×
+        </button>
+      </div>
+      <div class="photo-space modal-space" id="modalFoto"></div>
+      <h2 class="modal-title" id="modalTitulo"></h2>
+      <p class="modal-text" id="modalHistoria"></p>
+    </dialog>
+    <noscript
+      ><p class="no-js">
+        Activa JavaScript para abrir el álbum y la carta.
+      </p></noscript
+    >
+    <script>
+      // ==========================================================
+      // IMÁGENES: SOLO COLOCA TUS FOTOS EN LA CARPETA "fotos".
+      // La carpeta "fotos" debe estar junto a este archivo index.html.
+      // Guarda las fotos con estos nombres y aparecerán automáticamente.
+      // Si tus archivos tienen otros nombres o extensión (.png, .webp),
+      // cambia únicamente la ruta entre comillas en este bloque.
+      // Respeta exactamente las mayúsculas y minúsculas del archivo.
+      // ==========================================================
+      const IMAGENES = {
+        // FOTO 1: imagen principal de la bienvenida.
+        portada: "imagenes/principal.png",
+
+        // FOTO 2: tarjeta "Las risas que se quedan".
+        sonrisas: "imagenes/sonrisa.jpg",
+
+        // FOTO 3: tarjeta "Las personas que abrazan".
+        personas: "imagenes/familia.jpg",
+
+        // FOTO 4: tarjeta "Instantes para atesorar".
+        aventuras: "imagenes/recuerdos.jpeg",
+      };
+
+      // ==========================================================
+      // AGREGA TU CANCIÓN AQUÍ.
+      // Crea la carpeta "musica" junto a index.html y guarda dentro
+      // tu archivo como "cancion.mp3". Con ese nombre no necesitas
+      // cambiar la ruta. Para otro archivo, cambia solo las comillas.
+      // Usa la ruta de un archivo de audio, no un enlace de YouTube
+      // o Spotify. La música comienza con el primer toque, clic o tecla.
+      // ==========================================================
+      const MUSICA = {
+        archivo: "sonido/fondo.mpeg", // <-- RUTA DE TU CANCIÓN
+        titulo: "Una canción para recordar", // <-- NOMBRE QUE APARECERÁ
+      };
+
+      // PERSONALIZA AQUÍ EL NOMBRE, LA CARTA Y LAS HISTORIAS.
+      // Cada tarjeta reutiliza su foto al abrir el recuerdo ampliado.
+      const recuerdo = {
+        nombre: "",
+        portada: IMAGENES.portada,
+        piePortada: "Una alegría que se queda ♡",
+        firma: "",
+        carta: [
+          "Esta página es una forma de guardar un poquito de tu alegría. De reunir esos instantes que, aunque pasen, siguen encontrando un lugar en el corazón.",
+          "Ojalá que cada fotografía te devuelva una sonrisa y que cada recuerdo te acerque a las personas y a los momentos que más quieres.",
+          "Que sigas llenando tu vida de historias que te hagan feliz. Y que, cuando quieras volver a ellas, encuentres aquí un pequeño abrazo.",
+        ],
+        momentos: [
+          {
+            titulo: "Las risas que se quedan",
+            categoria: "sonrisas",
+            foto: IMAGENES.sonrisas,
+            fecha: "",
+            resumen: "Un espacio para una sonrisa inolvidable.",
+            historia:
+              "Aquí escribiremos qué estaba pasando en esta fotografía, qué les hizo reír y por qué ella querrá recordar este momento.",
+          },
+          {
+            titulo: "Las personas que abrazan",
+            categoria: "personas",
+            foto: IMAGENES.personas,
+            fecha: "",
+            resumen: "Un espacio para quienes hacen la vida bonita.",
+            historia:
+              "Aquí añadiremos una fotografía con alguien especial y una pequeña historia de lo que esa persona significa para ella.",
+          },
+          {
+            titulo: "Instantes para atesorar",
+            categoria: "aventuras",
+            foto: IMAGENES.aventuras,
+            fecha: "",
+            resumen: "Un espacio para un día que merece volver.",
+            historia:
+              "Aquí guardaremos un paseo, una celebración o una experiencia real, junto con la fecha y esas palabras que la hacen inolvidable.",
+          },
+        ],
+      };
+      const $ = (id) => document.getElementById(id);
+      const etiquetas = {
+        sonrisas: "Sonrisas",
+        personas: "Personas",
+        aventuras: "Aventuras",
+      };
+      $("nombreCancion").textContent = MUSICA.titulo;
+      const reproductor = $("reproductorMusica");
+      reproductor.addEventListener("error", () => {
+        $("estadoMusica").textContent = "La canción no está disponible por el momento.";
+        $("estadoMusica").hidden = false;
+      });
+      reproductor.addEventListener("loadeddata", () => {
+        $("estadoMusica").hidden = true;
+      });
+      reproductor.src = MUSICA.archivo;
+
+      // MÚSICA CON LA PRIMERA INTERACCIÓN, SIN NECESITAR TOCAR PLAY.
+      // Si el navegador rechaza el intento, espera otra interacción.
+      // Al comenzar la música, elimina estos listeners para respetar
+      // cualquier pausa que la persona haga después en el reproductor.
+      const eventosMusica = ["pointerup", "touchend", "click", "keydown"];
+      let intentoMusicaPendiente = false;
+      let musicaIniciada = false;
+
+      function dejarDeEsperarInteraccion() {
+        musicaIniciada = true;
+        eventosMusica.forEach((tipo) => {
+          document.removeEventListener(tipo, iniciarMusica, true);
+        });
+      }
+
+      function iniciarMusica(evento) {
+        if (!evento.isTrusted || musicaIniciada || intentoMusicaPendiente) return;
+        // Los controles de audio conservan su funcionamiento manual.
+        if (evento.target === reproductor || reproductor.contains(evento.target)) return;
+        if (evento.type === "keydown" &&
+            ["Shift", "Control", "Alt", "Meta", "Escape"].includes(evento.key)) return;
+        intentoMusicaPendiente = true;
+        reproductor.play().then(() => {
+          dejarDeEsperarInteraccion();
+        }).catch(() => {
+          // Evita errores de promesas y permite reintentar al tocar de nuevo.
+        }).finally(() => {
+          intentoMusicaPendiente = false;
+        });
+      }
+
+      reproductor.addEventListener("playing", () => {
+        $("estadoMusica").hidden = true;
+        dejarDeEsperarInteraccion();
+      });
+      eventosMusica.forEach((tipo) => {
+        document.addEventListener(tipo, iniciarMusica, { capture: true, passive: true });
+      });
+
+      function ponerFoto(container, ruta, alt, ubicacion = "Fotografía") {
+        container.replaceChildren();
+        container.classList.toggle("tiene-foto", Boolean(ruta));
+        if (ruta) {
+          const img = document.createElement("img");
+          img.alt = alt;
+          img.loading = container.id === "portada" ? "eager" : "lazy";
+          img.decoding = "async";
+          img.addEventListener("error", () => {
+            // Conserva el tamaño del marco mientras falta la imagen.
+            ponerFoto(container, "", alt, ubicacion);
+          }, { once: true });
+          img.src = ruta;
+          container.append(img);
+        } else {
+          const icon = document.createElement("span");
+          icon.textContent = "♡";
+          icon.style.cssText = "font:48px Georgia;margin-bottom:12px";
+          icon.setAttribute("aria-hidden", "true");
+          const label = document.createElement("small");
+          label.textContent = ubicacion + " · imagen pendiente";
+          container.append(icon, label);
+        }
+      }
+      if (recuerdo.nombre) {
+        document.title = recuerdo.nombre + " · MEMORIX";
+        $("bienvenida").textContent =
+          recuerdo.nombre +
+          ", este rincón es para ti: para tu alegría y para esos momentos que merecen quedarse para siempre.";
+        $("saludoCarta").textContent =
+          "Para " + recuerdo.nombre + ", con mucho cariño:";
+      }
+      ponerFoto(
+          $("portada"),
+          recuerdo.portada,
+          "Fotografía de portada" +
+            (recuerdo.nombre ? " de " + recuerdo.nombre : ""),
+          "Foto de portada",
+        );
+      $("piePortada").textContent = recuerdo.piePortada;
+      if (recuerdo.firma) $("firmaCarta").textContent = recuerdo.firma;
+      recuerdo.carta.forEach((texto) => {
+        const p = document.createElement("p");
+        p.textContent = texto;
+        $("parrafosCarta").append(p);
+      });
+      function abrirRecuerdo(item) {
+        $("modalTitulo").textContent = item.titulo;
+        $("modalCategoria").textContent =
+          (etiquetas[item.categoria] || "Recuerdo") +
+          (item.fecha ? " · " + item.fecha : "");
+        $("modalHistoria").textContent = item.historia;
+        ponerFoto($("modalFoto"), item.foto, item.titulo, item.titulo);
+        $("recuerdoDialog").showModal();
+      }
+      function mostrarGaleria(filtro = "todos") {
+        $("galeria").replaceChildren();
+        const items = recuerdo.momentos.filter(
+          (m) => filtro === "todos" || m.categoria === filtro,
+        );
+        items.forEach((item) => {
+          const b = document.createElement("button");
+          b.className = "memory";
+          b.type = "button";
+          b.setAttribute("aria-label", "Abrir recuerdo: " + item.titulo);
+          const photo = document.createElement("div");
+          photo.className = "photo-space";
+          ponerFoto(photo, item.foto, item.titulo, item.titulo);
+          const h = document.createElement("h3");
+          h.textContent = item.titulo;
+          const p = document.createElement("p");
+          p.textContent = item.resumen;
+          const foot = document.createElement("div");
+          foot.className = "card-foot";
+          const tag = document.createElement("span");
+          tag.textContent =
+            item.fecha || etiquetas[item.categoria] || "Recuerdo";
+          const arrow = document.createElement("span");
+          arrow.textContent = "Abrir ↗";
+          arrow.setAttribute("aria-hidden", "true");
+          foot.append(tag, arrow);
+          b.append(photo, h, p, foot);
+          b.addEventListener("click", () => abrirRecuerdo(item));
+          $("galeria").append(b);
+        });
+        if (!items.length) {
+          const p = document.createElement("p");
+          p.className = "empty";
+          p.textContent = "Todavía no hay recuerdos en esta categoría.";
+          $("galeria").append(p);
+        }
+      }
+      mostrarGaleria();
+      document.querySelectorAll(".filter").forEach((b) =>
+        b.addEventListener("click", () => {
+          document
+            .querySelectorAll(".filter")
+            .forEach((f) => f.setAttribute("aria-pressed", String(f === b)));
+          mostrarGaleria(b.dataset.filter);
+        }),
+      );
+      $("abrirCarta").addEventListener("click", () => {
+        const abrir = $("cartaTexto").hidden;
+        $("cartaTexto").hidden = !abrir;
+        $("abrirCarta").setAttribute("aria-expanded", String(abrir));
+        $("abrirCarta").setAttribute(
+          "aria-label",
+          abrir ? "Cerrar tu carta" : "Abrir tu carta",
+        );
+        $("instruccionCarta").textContent = abrir
+          ? "Una pequeña carta, para guardar en el corazón. Toca de nuevo para cerrarla."
+          : "Toca el corazón para abrir tu carta";
+      });
+      $("cerrarDialog").addEventListener("click", () =>
+        $("recuerdoDialog").close(),
+      );
+      $("recuerdoDialog").addEventListener("click", (e) => {
+        const r = $("recuerdoDialog").getBoundingClientRect();
+        if (
+          e.target === $("recuerdoDialog") &&
+          (e.clientX < r.left ||
+            e.clientX > r.right ||
+            e.clientY < r.top ||
+            e.clientY > r.bottom)
+        )
+          $("recuerdoDialog").close();
+      });
+    </script>
+  </body>
+</html>
